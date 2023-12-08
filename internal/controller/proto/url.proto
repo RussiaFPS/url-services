@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./controller";
+
+service Url{
+  rpc Save(SaveRequest) returns (SaveResponse){}
+  rpc Get(GetRequest) returns (GetResponse){}
+}
+
+message SaveRequest{
+  string originalUrl = 1;
+}
+
+message SaveResponse{
+  string shortUrl = 1;
+}
+
+message GetRequest{
+  string shortUrl = 1;
+}
+
+message GetResponse{
+  string originalUrl = 1;
+}

@@ -9,4 +9,4 @@ FROM alpine:latest
 WORKDIR .
 COPY --from=builder /go/bin/url-services/main .
 COPY --from=builder /go/bin/url-services/envs/ envs/
-ENTRYPOINT ["./main", "test"]
+ENTRYPOINT ["./main", "pst"]
