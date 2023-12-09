@@ -2,7 +2,7 @@ package repo
 
 import (
 	"context"
-	"fmt"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"sync"
 )
@@ -68,7 +68,7 @@ func (m *MemoRepo) Save(ctx context.Context, urlOriginal string, urlShort string
 func (m *MemoRepo) Get(ctx context.Context, urlShort string) (string, error) {
 	v, ok := m.db.Load(urlShort)
 	if !ok {
-		return "", fmt.Errorf("not found")
+		return "", pgx.ErrNoRows
 	}
 
 	return v.(string), nil
